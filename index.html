@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <div id="newBook">
+        <form action="" method="post">
+          <fieldset>
+            <label for="title">Title</label>
+            <input type="text" id="title" />
+          </fieldset>
+          <fieldset>
+            <label for="author">Author</label>
+            <input type="text" id="author" />
+          </fieldset>
+          <fieldset>
+            <label for="pages">Pages</label>
+            <input type="text" id="pages" inputmode="numeric" />
+          </fieldset>
+          <fieldset>
+            <label for="title">Have Read </label>
+            <select name="readStatus" id="">
+              <option value="Read">Read</option>
+              <option value="Not Read">Not Read</option>
+            </select>
+          </fieldset>
+          <button type="submit">Add Book</button>
+        </form>
+      </div>
+      <div id="library">
+        <table>
+          <caption>
+            List of all my books
+          </caption>
+          <thead>
+            <tr>
+              <th>Serial No.</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Pages</th>
+              <th>Read Status</th>
+              <th>Update</th>
+            </tr>
+          </thead>
+          <tbody id="bookList"></tbody>
+        </table>
+      </div>
+    </main>
     <script src="./js/script.js"></script>
-</body>
+  </body>
 </html>
