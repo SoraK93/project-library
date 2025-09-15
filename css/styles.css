@@ -15,7 +15,7 @@
 /*  */
 main {
   display: grid;
-  grid-template-columns: auto 4fr;
+  grid-template-columns: minmax(100px, 300px) minmax(300px, auto);
   height: 100vh;
   font-family: "Funnel Sans", sans-serif;
 }
@@ -24,21 +24,37 @@ main {
 #newBook {
   display: flex;
   align-items: center;
+  background-color: black;
 }
 
-form {
+#newBook > form {
+  position: fixed;
+  top: 35%;
+  left: 0;
+  min-width: 100px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: auto;
+
+  & button {
+    font-size: 1rem;
+    margin: 5px auto;
+    padding: 0 5em;
+    height: 3em;
+  }
 }
 
 fieldset {
   margin: 0.3em 1em;
   border: none;
+  width: auto;
 }
 
 label {
+  color: lightgrey;
   display: inline-block;
   width: 4.5em;
   font-weight: bold;
@@ -47,13 +63,12 @@ label {
 input,
 select {
   width: 12em;
+  border: none;
 }
 
-form > button {
-  font-size: 1rem;
-  margin: auto;
-  padding: 0 5em;
-  height: 3em;
+input:focus,
+select:focus {
+  outline: 2px solid grey;
 }
 
 /* Card Section */
@@ -66,8 +81,8 @@ form > button {
 table,
 td,
 th {
-  border-collapse: collapse;
-  border-spacing: 0;
+  border-collapse: separate;
+  border-spacing: 0 10px;
 }
 
 thead tr th {
@@ -79,28 +94,64 @@ table {
   width: 90%;
 }
 
-.book:nth-child(odd) {
-  background: rgba(226, 253, 252, 0.452);
-}
-.book:nth-child(even) {
-  background: rgba(255, 251, 189, 0.452);
+#bookList tr {
+  height: 120px;
+  &:nth-child(odd) {
+    background: rgba(29, 243, 232, 0.281);
+    box-shadow: 1px 1px 3px 2px grey;
+  }
+  &:nth-child(even) {
+    background: rgba(255, 238, 0, 0.356);
+    box-shadow: 1px 1px 3px 2px grey;
+  }
 }
 
 th,
 td {
   min-width: 10%;
-  width: 20%;
-  padding: 0 0.5em;
+  padding: 0 0.8em;
   text-align: left;
+  font-size: 1.3rem;
 }
 
 .book td {
   word-break: normal;
 }
 
-td button {
-  max-width: 95%;
+.update button {
   min-width: 50px;
   width: 8em;
-  margin: 0 auto;
+  height: 2em;
+  margin: 5px auto;
+  border: none;
+  border-radius: 10%;
+  box-shadow: 1px 1px 3px 2px grey;
+  background-color: orange;
+  font-size: 0.9rem;
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(255, 208, 0);
+    transform: translateY(-1px);
+    transition: 0.3s;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+th,
+.bookRead,
+.bookPages {
+  text-align: center;
+}
+.update {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 }
